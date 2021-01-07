@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import react from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends react.Component {
+  constructor() {
+    super()
+  }
+
+  render(){
+    //mount routes using react router dom
+    //mount navbar
+    //mount main component that has tracker graphic, goal title, and comments from friends
+    return (
+      <div>
+        <p>hello!</p>
+      </div>
+    )
+  }
 }
 
 export default App;
