@@ -8,7 +8,7 @@ class Home extends react.Component{
     render(){
         return (
             <div>
-                <p>Home</p>
+                <p>This is a home page for un-logged in users</p>
             </div>
         )
     }

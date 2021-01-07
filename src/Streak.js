@@ -6,6 +6,7 @@ class Streak extends react.Component{
     }
 
     render(){
+        //might not need this component
         return (
             <div>
                 <p>Streak</p>

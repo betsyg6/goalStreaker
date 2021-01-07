@@ -19,6 +19,7 @@ const Routes = () => {
 					<h1>Goal Streaker</h1>
 					<Switch>
 						<Route exact path="/" component={Home} />
+            {/* might not need the streak component */}
             <Route path="/streak" component={Streak} />
             {/* <Route path="/addgoal" component={AddGoal} /> */}
             {/* <Route path="/singlegoal" component={SingleGoal} /> */}

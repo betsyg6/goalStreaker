@@ -1,4 +1,5 @@
 import react from "react"
+import UserGoals from "./UserGoals"
 
 class UserHome extends react.Component{
     constructor(){
@@ -8,7 +9,9 @@ class UserHome extends react.Component{
     render(){
         return (
             <div>
-                <p>User Home</p>
+                <p>If the user is logged in, show this page!</p>
+                <p>logged in user's goals:</p>
+                <UserGoals />
             </div>
         )
     }
