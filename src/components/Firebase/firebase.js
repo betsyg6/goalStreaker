@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -15,8 +16,13 @@ class Firebase {
 	constructor() {
 		app.initializeApp(config);
 
+		//initialize auth API
 		this.auth = app.auth();
+		//initialize database API
+		this.db = app.database();
 	}
+
+	//-------AUTH API-------
 
 	//authentication methods
 	doCreateUserWithEmailAndPassword = (email, password) =>
@@ -32,6 +38,11 @@ class Firebase {
 
 	doPasswordUpdate = (password) =>
 		this.auth.currentUser.updatePassword(password);
+
+	//-------DB API-------
+	//inside ref() are the paths where the entities will be stored in the realtime db API
+	user = (uid) => this.db.ref(`users/${uid}`);
+	users = () => this.db.ref('users');
 }
 
 export default Firebase;
