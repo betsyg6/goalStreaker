@@ -22,6 +22,7 @@ class Firebase {
 		this.db = app.database();
 	}
 
+	//authentication
 	//-------AUTH API-------
 
 	//authentication methods
@@ -39,10 +40,14 @@ class Firebase {
 	doPasswordUpdate = (password) =>
 		this.auth.currentUser.updatePassword(password);
 
-	//-------DB API-------
+	//database
+	//-------USER API-------
 	//inside ref() are the paths where the entities will be stored in the realtime db API
 	user = (uid) => this.db.ref(`users/${uid}`);
 	users = () => this.db.ref('users');
+	//--------GOAL API------
+	goal = (uid) => this.db.ref(`goals/${uid}`);
+	goals = () => this.db.ref(`goals`);
 }
 
 export default Firebase;
