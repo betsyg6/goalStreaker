@@ -1,6 +1,6 @@
-# Goal Streaker
+# Goal Streaker :trophy:
 
-Goal Streaker is an app that lets users track their progress/streak towards a goal they've committed to for a certain amount of days.
+Inspired by New Years Resolutions that never seem to stick, Goal Streaker is an app that lets users track their progress/streak towards a goal they've committed to for a certain amount of days. It takes 14 days to form a habit, so the challenge is: Can you spend the next 14 days committed to a goal, that could ideally form into a daily practice or habit and improve your lifestyle? Developed using React and Firebase (for user authentication and as a real time database) by Betsy Groton.
 
 # Acknowledgements
 
