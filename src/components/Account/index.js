@@ -4,7 +4,7 @@ import PasswordChange from '../PasswordChange';
 
 const Account = () => (
 	<div>
-		<h1>Account Page</h1>
+		<h1>Manage My Account</h1>
 		<PasswordForgetForm />
 		<PasswordChange />
 	</div>

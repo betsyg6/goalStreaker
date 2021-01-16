@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-
 import { withFirebase } from '../Firebase';
+//material ui
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 const INITIAL_STATE = {
 	passwordOne: '',
@@ -40,27 +48,57 @@ class PasswordChange extends Component {
 		const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
 
 		return (
-			<form onSubmit={this.onSubmit}>
-				<input
-					name='passwordOne'
-					value={passwordOne}
-					onChange={this.onChange}
-					type='password'
-					placeholder='New Password'
-				/>
-				<input
-					name='passwordTwo'
-					value={passwordTwo}
-					onChange={this.onChange}
-					type='password'
-					placeholder='Confirm New Password'
-				/>
-				<button disabled={isInvalid} type='submit'>
-					Reset My Password
-				</button>
-
-				{error && <p>{error.message}</p>}
-			</form>
+			<Container component='main' maxWidth='xs'>
+				<CssBaseline />
+				<div>
+					<Avatar>
+						<LockOutlinedIcon />
+					</Avatar>
+					<Typography component='h1' variant='h5'>
+						Change Password
+					</Typography>
+					<form onSubmit={this.onSubmit} noValidate>
+						<TextField
+							variant='outlined'
+							margin='normal'
+							required
+							fullWidth
+							id='passwordOne'
+							label='New Password'
+							name='passwordOne'
+							value={passwordOne}
+							onChange={this.onChange}
+							autoComplete='passwordOne'
+							autoFocus
+						/>
+						<TextField
+							variant='outlined'
+							margin='normal'
+							required
+							fullWidth
+							name='passwordTwo'
+							value={passwordTwo}
+							onChange={this.onChange}
+							label='Confirm New Password'
+							type='password'
+							id='passwordTwo'
+							autoComplete='current-password'
+						/>
+						<Button
+							type='submit'
+							disabled={isInvalid}
+							fullWidth
+							variant='contained'
+							color='primary'
+						>
+							Reset My Password
+						</Button>
+						<Grid container justify='flex-end'>
+							<Grid item>{error && <p>{error.message}</p>}</Grid>
+						</Grid>
+					</form>
+				</div>
+			</Container>
 		);
 	}
 }
