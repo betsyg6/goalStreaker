@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = () => {
 	const classes = useStyles();
-	const [open, setOpen] = React.useState(true);
+	const [open, setOpen] = React.useState(false);
 	const handleDrawerOpen = () => {
 		setOpen(true);
 	};
@@ -141,21 +141,6 @@ const Navigation = () => {
 					>
 						<MenuIcon />
 					</IconButton>
-					{/* <Typography
-						component='h1'
-						variant='h6'
-						color='inherit'
-						noWrap
-						className={classes.title}
-					>
-						Dashboard
-					</Typography> */}
-
-					{/* <IconButton color='inherit'>
-						<Badge badgeContent={4} color='secondary'>
-							<NotificationsIcon />
-						</Badge>
-					</IconButton> */}
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -186,12 +171,12 @@ const Navigation = () => {
 
 const NavigationAuth = () => (
 	<div>
-		<ListItem button component={Link} to={ROUTES.LANDING}>
+		{/* <ListItem button component={Link} to={ROUTES.LANDING}>
 			<ListItemIcon>
 				<DashboardIcon />
 			</ListItemIcon>
 			<ListItemText primary='Landing' />
-		</ListItem>
+		</ListItem> */}
 		<ListItem button component={Link} to={ROUTES.HOME}>
 			<ListItemIcon>
 				<PeopleIcon />
@@ -204,12 +189,12 @@ const NavigationAuth = () => (
 			</ListItemIcon>
 			<ListItemText primary='Account' />
 		</ListItem>
-		<ListItem button component={Link} to={ROUTES.ADMIN}>
+		{/* <ListItem button component={Link} to={ROUTES.ADMIN}>
 			<ListItemIcon>
 				<AssignmentIcon />
 			</ListItemIcon>
 			<ListItemText primary='Admin' />
-		</ListItem>
+		</ListItem> */}
 		<ListItem button>
 			<ListItemIcon>
 				<LayersIcon />
