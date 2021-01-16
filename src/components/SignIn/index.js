@@ -5,13 +5,19 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+//material ui
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 const SignIn = () => (
 	<div>
-		<h1>SignIn</h1>
 		<SignInForm />
-		<PasswordForgetLink />
-		<SignUpLink />
 	</div>
 );
 
@@ -54,27 +60,65 @@ class SignInFormBase extends Component {
 		const isInvalid = password === '' || email === '';
 
 		return (
-			<form onSubmit={this.onSubmit}>
-				<input
-					name='email'
-					value={email}
-					onChange={this.onChange}
-					type='text'
-					placeholder='Email Address'
-				/>
-				<input
-					name='password'
-					value={password}
-					onChange={this.onChange}
-					type='password'
-					placeholder='Password'
-				/>
-				<button disabled={isInvalid} type='submit'>
-					Sign In
-				</button>
-
-				{error && <p>{error.message}</p>}
-			</form>
+			<Container component='main' maxWidth='xs'>
+				<CssBaseline />
+				<div>
+					<Avatar>
+						<LockOutlinedIcon />
+					</Avatar>
+					<Typography component='h1' variant='h5'>
+						Sign in
+					</Typography>
+					<form onSubmit={this.onSubmit} noValidate>
+						<TextField
+							variant='outlined'
+							margin='normal'
+							required
+							fullWidth
+							id='email'
+							label='Email Address'
+							name='email'
+							value={email}
+							onChange={this.onChange}
+							autoComplete='email'
+							autoFocus
+						/>
+						<TextField
+							variant='outlined'
+							margin='normal'
+							required
+							fullWidth
+							name='password'
+							value={password}
+							onChange={this.onChange}
+							label='Password'
+							type='password'
+							id='password'
+							autoComplete='current-password'
+						/>
+						<Button
+							type='submit'
+							disabled={isInvalid}
+							fullWidth
+							variant='contained'
+							color='primary'
+						>
+							Sign In
+						</Button>
+						<Grid container justify='flex-end'>
+							<Grid item>{error && <p>{error.message}</p>}</Grid>
+						</Grid>
+						<Grid container>
+							<Grid item xs>
+								<PasswordForgetLink />
+							</Grid>
+							<Grid item>
+								<SignUpLink />
+							</Grid>
+						</Grid>
+					</form>
+				</div>
+			</Container>
 		);
 	}
 }
