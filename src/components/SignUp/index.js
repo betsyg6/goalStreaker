@@ -4,6 +4,20 @@ import * as ROUTES from '../../constants/routes';
 import { FirebaseContext } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
+//material ui
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
+// import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+// import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+// import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
 const INITIAL_STATE = {
 	username: '',
@@ -61,42 +75,134 @@ class SignUpFormBase extends Component {
 			email === '' ||
 			username === '';
 
+		console.log(this.state);
 		return (
-			<form onSubmit={this.onSubmit}>
-				<input
-					name='username'
-					value={username}
-					onChange={this.onChange}
-					type='text'
-					placeholder='Full Name'
-				/>
-				<input
-					name='email'
-					value={email}
-					onChange={this.onChange}
-					type='text'
-					placeholder='Email Address'
-				/>
-				<input
-					name='passwordOne'
-					value={passwordOne}
-					onChange={this.onChange}
-					type='password'
-					placeholder='Password'
-				/>
-				<input
-					name='passwordTwo'
-					value={passwordTwo}
-					onChange={this.onChange}
-					type='password'
-					placeholder='Confirm Password'
-				/>
-				<button disabled={isInvalid} type='submit'>
-					Sign Up
-				</button>
+			<Container component='main' maxWidth='xs'>
+				<CssBaseline />
+				<div>
+					<Avatar>
+						<LockOutlinedIcon />
+					</Avatar>
+					<Typography component='h1' variant='h5'>
+						Sign up
+					</Typography>
+					<form noValidate onSubmit={this.onSubmit}>
+						<Grid container spacing={2}>
+							<Grid item xs={12} sm={6}>
+								<TextField
+									autoComplete='username'
+									name='username'
+									variant='outlined'
+									value={username}
+									required
+									onChange={this.onChange}
+									fullWidth
+									id='username'
+									label='User Name'
+									autoFocus
+								/>
+							</Grid>
+							<Grid item xs={12} sm={6}>
+								<TextField
+									variant='outlined'
+									required
+									fullWidth
+									value={email}
+									id='email'
+									label='E-mail'
+									onChange={this.onChange}
+									name='email'
+									autoComplete='email'
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									variant='outlined'
+									required
+									fullWidth
+									value={passwordOne}
+									name='passwordOne'
+									label='Password'
+									type='password'
+									id='passwordOne'
+									onChange={this.onChange}
+									autoComplete='current-password'
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									variant='outlined'
+									required
+									fullWidth
+									value={passwordTwo}
+									onChange={this.onChange}
+									name='passwordTwo'
+									label='Confirm Password'
+									type='password'
+									id='passwordTwo'
+									autoComplete='current-password'
+								/>
+							</Grid>
+							{/* <Grid item xs={12}>
+								<FormControlLabel
+									control={
+										<Checkbox value='allowExtraEmails' color='primary' />
+									}
+									label='I want to receive inspiration, marketing promotions and updates via email.'
+								/>
+							</Grid> */}
+						</Grid>
+						<Button
+							disabled={isInvalid}
+							type='submit'
+							fullWidth
+							variant='contained'
+							color='primary'
+						>
+							Sign Up
+						</Button>
+						<Grid container justify='flex-end'>
+							<Grid item>{error && <p>{error.message}</p>}</Grid>
+						</Grid>
+					</form>
+				</div>
+			</Container>
 
-				{error && <p>{error.message}</p>}
-			</form>
+			// <form onSubmit={this.onSubmit}>
+			// 	<input
+			// 		name='username'
+			// 		value={username}
+			// 		onChange={this.onChange}
+			// 		type='text'
+			// 		placeholder='Full Name'
+			// 	/>
+			// 	<input
+			// 		name='email'
+			// 		value={email}
+			// 		onChange={this.onChange}
+			// 		type='text'
+			// 		placeholder='Email Address'
+			// 	/>
+			// 	<input
+			// 		name='passwordOne'
+			// 		value={passwordOne}
+			// 		onChange={this.onChange}
+			// 		type='password'
+			// 		placeholder='Password'
+			// 	/>
+			// 	<input
+			// 		name='passwordTwo'
+			// 		value={passwordTwo}
+			// 		onChange={this.onChange}
+			// 		type='password'
+			// 		placeholder='Confirm Password'
+			// 	/>
+			// 	<button disabled={isInvalid} type='submit'>
+			// 		Sign Up
+			// 	</button>
+
+			// 	{error && <p>{error.message}</p>}
+			// </form>
 		);
 	}
 }
