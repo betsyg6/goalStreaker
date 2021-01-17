@@ -1,5 +1,3 @@
-//this is a component that will add a goal to firebase associated to user (currently modeled after sign up since it will be a similar structure for adding data to db)
-
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import * as ROUTES from '../../../constants/routes';
@@ -38,10 +36,11 @@ class AddGoalFormBase extends Component {
 
 	onSubmit = (event, authUser) => {
 		const { title, daysCompleted, totalDays } = this.state;
-		//not sure what goes here...would need to add the goal to the db and have it be associated to the user
+
 		this.props.firebase
 			.goal(authUser.uid)
-			.set({ title, daysCompleted, totalDays })
+			//pushes each goal object into the user's goal array
+			.push({ title, daysCompleted, totalDays })
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
 				this.props.history.push(ROUTES.HOME);
@@ -49,9 +48,6 @@ class AddGoalFormBase extends Component {
 			.catch((error) => {
 				this.setState({ error });
 			});
-
-		// this.setState({ ...INITIAL_STATE });
-		// this.props.history.push(ROUTES.HOME);
 
 		event.preventDefault();
 	};
@@ -62,7 +58,7 @@ class AddGoalFormBase extends Component {
 
 	render() {
 		const { title, daysCompleted, totalDays, error } = this.state;
-		//user can only sign up if their passwords match and none of the fields are left empty
+		//user can only sign up if none of the fields are left empty
 		const isInvalid = title === '' || daysCompleted === '' || totalDays === '';
 
 		console.log(this.state);
