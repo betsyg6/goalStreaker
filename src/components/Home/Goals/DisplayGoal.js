@@ -1,4 +1,5 @@
 //this is a component that will display the chart/visual to demonstrate progress towards goal
+//deploying practice
 
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
