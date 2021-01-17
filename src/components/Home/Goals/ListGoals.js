@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-import { withFirebase } from '../Firebase';
+import { withFirebase } from '../../Firebase';
 
 class ListGoals extends Component {
 	constructor(props) {
@@ -10,26 +10,26 @@ class ListGoals extends Component {
 
 		this.state = {
 			loading: false,
-			goals: [],
+			goals: [{ title: 'Cook', daysCompleted: 5, totalDays: 15 }],
 		};
 	}
 
 	componentDidMount() {
 		this.setState({ loading: true });
 
-		this.props.firebase.goals().on('value', (snapshot) => {
-			//users are objects when retrieved from firebase, must restructure as an array so it's easier to display
-			const goalsObject = snapshot.val();
-			const goalsList = Object.keys(goalsObject).map((key) => ({
-				...goalsObject[key],
-				uid: key,
-			}));
+		// this.props.firebase.goals().on('value', (snapshot) => {
+		// 	//users are objects when retrieved from firebase, must restructure as an array so it's easier to display
+		// 	const goalsObject = snapshot.val();
+		// 	const goalsList = Object.keys(goalsObject).map((key) => ({
+		// 		...goalsObject[key],
+		// 		uid: key,
+		// 	}));
 
-			this.setState({
-				goals: goalsList,
-				loading: false,
-			});
-		});
+		// 	this.setState({
+		// 		goals: goalsList,
+		// 		loading: false,
+		// 	});
+		// });
 	}
 
 	componentWillUnmount() {
@@ -51,7 +51,7 @@ class ListGoals extends Component {
 const GoalList = ({ goals }) => (
 	<ul>
 		{goals.map((goal) => (
-			<li key={goal.uid}>
+			<li key={goals.indexOf(goal)}>
 				<span>
 					<strong>Title:</strong> {goal.title}
 				</span>

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AddGoal from './Goals/AddGoal';
+import ListGoals from './Goals/ListGoals';
 //material ui
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 const drawerWidth = 240;
 
@@ -63,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
 	const classes = useStyles();
+	const [showAddGoal, setShowAddGoal] = useState(false);
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	return (
@@ -77,12 +81,15 @@ const Home = () => {
 					</Grid>
 					<Grid item xs={12} md={4} lg={3}>
 						<Paper className={fixedHeightPaper}>
-							<p>View All Goals</p>
+							<ListGoals />
 						</Paper>
 					</Grid>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
-							<p>Add A Goal</p>
+							<Button onClick={() => setShowAddGoal(!showAddGoal)}>
+								Add A Goal
+							</Button>
+							{showAddGoal && <AddGoal />}
 						</Paper>
 					</Grid>
 				</Grid>

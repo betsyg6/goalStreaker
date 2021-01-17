@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 // import * as ROUTES from '../../constants/routes';
 // import { FirebaseContext } from 'react-router-dom';
-import { withFirebase } from '../Firebase';
+import { withFirebase } from '../../Firebase';
 import { compose } from 'recompose';
 //material ui
 import Avatar from '@material-ui/core/Avatar';
@@ -61,15 +61,13 @@ class AddGoalFormBase extends Component {
 		//user can only sign up if their passwords match and none of the fields are left empty
 		const isInvalid = title === '' || daysCompleted === '' || totalDays === '';
 
+		console.log(this.state);
 		return (
 			<Container component='main' maxWidth='xs'>
 				<CssBaseline />
 				<div>
-					<Avatar>
-						<LockOutlinedIcon />
-					</Avatar>
 					<Typography component='h1' variant='h5'>
-						Sign up
+						New Goal
 					</Typography>
 					<form noValidate onSubmit={this.onSubmit}>
 						<Grid container spacing={2}>
