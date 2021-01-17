@@ -56,10 +56,7 @@ const GoalList = ({ goals }) => (
 					<strong>Title:</strong> {goal.title}
 				</span>
 				<span>
-					<strong>Days Completed:</strong> {goal.daysCompleted}
-				</span>
-				<span>
-					<strong>Total Days:</strong> {goal.totalDays}
+					<strong>Completion:</strong> {goal.daysCompleted}/{goal.totalDays}
 				</span>
 			</li>
 		))}
