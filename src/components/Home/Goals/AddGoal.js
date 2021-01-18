@@ -61,7 +61,6 @@ class AddGoalFormBase extends Component {
 		//user can only sign up if none of the fields are left empty
 		const isInvalid = title === '' || daysCompleted === '' || totalDays === '';
 
-		console.log(this.state);
 		return (
 			<AuthUserContext.Consumer>
 				{(authUser) => (

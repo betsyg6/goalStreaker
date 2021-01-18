@@ -4,21 +4,21 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const data = {
-	labels: ['Goal Streak', 'Days Left in Streak'],
-	datasets: [
-		{
-			label: 'Goal Streak',
-			data: [10, 20],
-			backgroundColor: ['#B21F00', '#C9DE00'],
-		},
-	],
-};
+const DisplayGoal = ({ currentGoal }) => {
+	const data = {
+		labels: ['Goal Streak', 'Days Left in Streak'],
+		datasets: [
+			{
+				label: 'Goal Streak',
+				data: [currentGoal.daysCompleted, currentGoal.totalDays],
+				backgroundColor: ['#B21F00', '#C9DE00'],
+			},
+		],
+	};
 
-const DisplayGoal = () => {
 	return (
 		<div>
-			<p>Current Goal</p>
+			<h1>Currently Viewing: {currentGoal.title}</h1>
 			<Doughnut data={data} />
 		</div>
 	);

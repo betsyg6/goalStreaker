@@ -77,7 +77,7 @@ const GoalList = ({ goals, currentGoalClick, currentGoal }) => (
 	<>
 		{goals.map((goal) => (
 			<ListItem
-				key={goal.goalId}
+				key={goals.indexOf(goal)}
 				button
 				onClick={() => currentGoalClick(goal.goalId)}
 			>
