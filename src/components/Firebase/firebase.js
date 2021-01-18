@@ -48,6 +48,7 @@ class Firebase {
 	//--------GOAL API------
 	goal = (uid) => this.db.ref(`goals/${uid}`);
 	goals = () => this.db.ref(`goals`);
+	modifyGoal = (uid, goalId) => this.db.ref(`goals/${uid}/${goalId}`);
 }
 
 export default Firebase;

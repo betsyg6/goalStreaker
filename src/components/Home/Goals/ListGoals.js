@@ -4,6 +4,9 @@ import { withFirebase } from '../../Firebase';
 //material ui
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import LayersIcon from '@material-ui/icons/Layers';
+
 import { AuthUserContext } from '../../Session';
 
 class ListGoals extends Component {
@@ -16,11 +19,13 @@ class ListGoals extends Component {
 			goals: [{ title: 'Cook', daysCompleted: 5, totalDays: 15 }],
 		};
 		this.currentGoalClick = this.currentGoalClick.bind(this);
+		this.deleteGoalOnClick = this.deleteGoalOnClick.bind(this);
 	}
 
 	componentDidMount() {
 		this.setState({ loading: true });
 
+		this.props.firebase.goals();
 		this.props.firebase.goals().on('value', (snapshot) => {
 			const goalsObject = snapshot.val();
 
@@ -32,16 +37,20 @@ class ListGoals extends Component {
 			let userId = this.props.firebase.auth.currentUser.uid;
 
 			let myObj = goalsList.find((obj) => obj.uid === userId);
-			const myList = Object.keys(myObj).map((key) => {
-				return {
-					...myObj[key],
-					goalId: key,
-				};
-			});
+
+			const myList = myObj
+				? Object.keys(myObj).map((key) => {
+						return {
+							...myObj[key],
+							goalId: key,
+						};
+				  })
+				: [];
 
 			this.setState({
 				goals: myList,
 				loading: false,
+				userId,
 			});
 		});
 	}
@@ -57,9 +66,14 @@ class ListGoals extends Component {
 		});
 	}
 
+	deleteGoalOnClick(goalId) {
+		const user = this.state.userId;
+		this.props.firebase.modifyGoal(user, goalId).remove();
+	}
+
 	render() {
 		const { goals, loading, currentGoal } = this.state;
-		console.log(goals);
+
 		return (
 			<div>
 				<h1>All Goals</h1>
@@ -68,13 +82,19 @@ class ListGoals extends Component {
 					goals={goals}
 					currentGoalClick={this.currentGoalClick}
 					currentGoal={currentGoal}
+					deleteGoalOnClick={this.deleteGoalOnClick}
 				/>
 			</div>
 		);
 	}
 }
 
-const GoalList = ({ goals, currentGoalClick, currentGoal }) => (
+const GoalList = ({
+	goals,
+	currentGoalClick,
+	currentGoal,
+	deleteGoalOnClick,
+}) => (
 	<>
 		{goals.map((goal) => {
 			if (goal.title) {
@@ -87,6 +107,9 @@ const GoalList = ({ goals, currentGoalClick, currentGoal }) => (
 						<ListItemText
 							primary={`Title: ${goal.title}, Completion: ${goal.daysCompleted}/${goal.totalDays}`}
 						/>
+						<ListItemIcon>
+							<LayersIcon onClick={() => deleteGoalOnClick(goal.goalId)} />
+						</ListItemIcon>
 					</ListItem>
 				);
 			}
