@@ -6,6 +6,7 @@ const Account = () => (
 	<div>
 		<h1>Manage My Account</h1>
 		<PasswordForgetForm />
+		<br />
 		<PasswordChange />
 	</div>
 );

@@ -1,11 +1,10 @@
-//this is a component that will display a list of the user's goals (currently modeled after admin, because it will be sort of similar data fetching from firebase)
-
 import React, { Component } from 'react';
 import DisplayGoal from './DisplayGoal';
 import { withFirebase } from '../../Firebase';
 //material ui
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { AuthUserContext } from '../../Session';
 
 class ListGoals extends Component {
 	constructor(props) {
@@ -23,18 +22,19 @@ class ListGoals extends Component {
 		this.setState({ loading: true });
 
 		this.props.firebase.goals().on('value', (snapshot) => {
-			//users are objects when retrieved from firebase, must restructure as an array so it's easier to display
 			const goalsObject = snapshot.val();
 
 			const goalsList = Object.keys(goalsObject).map((key) => ({
 				...goalsObject[key],
+				uid: key,
 			}));
 
-			const myGoals = goalsList[0];
+			let userId = this.props.firebase.auth.currentUser.uid;
 
-			const myList = Object.keys(myGoals).map((key) => {
+			let myObj = goalsList.find((obj) => obj.uid === userId);
+			const myList = Object.keys(myObj).map((key) => {
 				return {
-					...myGoals[key],
+					...myObj[key],
 					goalId: key,
 				};
 			});
@@ -59,6 +59,7 @@ class ListGoals extends Component {
 
 	render() {
 		const { goals, loading, currentGoal } = this.state;
+		console.log(goals);
 		return (
 			<div>
 				<h1>All Goals</h1>
@@ -75,17 +76,21 @@ class ListGoals extends Component {
 
 const GoalList = ({ goals, currentGoalClick, currentGoal }) => (
 	<>
-		{goals.map((goal) => (
-			<ListItem
-				key={goals.indexOf(goal)}
-				button
-				onClick={() => currentGoalClick(goal.goalId)}
-			>
-				<ListItemText
-					primary={`Title: ${goal.title}, Completion: ${goal.daysCompleted}/${goal.totalDays}`}
-				/>
-			</ListItem>
-		))}
+		{goals.map((goal) => {
+			if (goal.title) {
+				return (
+					<ListItem
+						key={goals.indexOf(goal)}
+						button
+						onClick={() => currentGoalClick(goal.goalId)}
+					>
+						<ListItemText
+							primary={`Title: ${goal.title}, Completion: ${goal.daysCompleted}/${goal.totalDays}`}
+						/>
+					</ListItem>
+				);
+			}
+		})}
 
 		<DisplayGoal currentGoal={currentGoal} />
 	</>

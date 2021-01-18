@@ -18,8 +18,14 @@ const DisplayGoal = ({ currentGoal }) => {
 
 	return (
 		<div>
-			<h1>Currently Viewing: {currentGoal.title}</h1>
-			<Doughnut data={data} />
+			{currentGoal.title ? (
+				<>
+					<h1>Currently Viewing: {currentGoal.title}</h1>
+					<Doughnut data={data} />
+				</>
+			) : (
+				<h1>Select a Goal or Add a Goal!</h1>
+			)}
 		</div>
 	);
 };
