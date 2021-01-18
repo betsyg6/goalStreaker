@@ -126,7 +126,7 @@ class AddGoalFormBase extends Component {
 									variant='contained'
 									color='primary'
 								>
-									Sign Up
+									Add Goal
 								</Button>
 								<Grid container justify='flex-end'>
 									<Grid item>{error && <p>{error.message}</p>}</Grid>
