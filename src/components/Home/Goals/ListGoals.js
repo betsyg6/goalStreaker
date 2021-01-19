@@ -7,7 +7,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ClearIcon from '@material-ui/icons/Clear';
 import AddIcon from '@material-ui/icons/Add';
-import { AuthUserContext } from '../../Session';
 
 class ListGoals extends Component {
 	constructor(props) {
@@ -123,6 +122,8 @@ const GoalList = ({
 						</ListItemIcon>
 					</ListItem>
 				);
+			} else {
+				return '';
 			}
 		})}
 

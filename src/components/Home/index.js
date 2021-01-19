@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import AddGoal from './Goals/AddGoal';
 import ListGoals from './Goals/ListGoals';
-// import DisplayGoal from './Goals/DisplayGoal';
 //material ui
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';

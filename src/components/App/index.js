@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Landing from '../Landing';
@@ -8,7 +8,6 @@ import PasswordForget from '../PasswordForget';
 import Home from '../Home';
 import Account from '../Account';
 import Admin from '../Admin';
-
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 //material ui
