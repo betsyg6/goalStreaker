@@ -1,5 +1,10 @@
 - feature to update in firebase -- add a completed day
-- ability to delete from firebase -- delete a goal
+- completion feature/flair when a goal is completed
+- display past goals?
 
 - sign out icon in top right corner
-- styling
+- delete icon in goal List view
+- overall styling
+- prettier landing page
+- redirect after signout
+- security

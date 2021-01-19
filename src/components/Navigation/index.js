@@ -12,7 +12,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 // import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
+import InputIcon from '@material-ui/icons/Input';
 // import AssignmentIcon from '@material-ui/icons/Assignment';
 //second
 import clsx from 'clsx';
@@ -197,7 +197,7 @@ const NavigationAuth = () => (
 		</ListItem> */}
 		<ListItem button>
 			<ListItemIcon>
-				<LayersIcon />
+				<InputIcon />
 			</ListItemIcon>
 			<SignOut />
 		</ListItem>

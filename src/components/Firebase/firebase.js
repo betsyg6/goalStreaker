@@ -49,6 +49,13 @@ class Firebase {
 	goal = (uid) => this.db.ref(`goals/${uid}`);
 	goals = () => this.db.ref(`goals`);
 	modifyGoal = (uid, goalId) => this.db.ref(`goals/${uid}/${goalId}`);
+	addOneDay = (uid, goalId) =>
+		this.db
+			.ref(`goals/${uid}/${goalId}`)
+			.child('daysCompleted')
+			.transaction(function (daysCompleted) {
+				return (Number(daysCompleted) || 0) + 1;
+			});
 }
 
 export default Firebase;

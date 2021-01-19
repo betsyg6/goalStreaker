@@ -5,8 +5,8 @@ import { withFirebase } from '../../Firebase';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import LayersIcon from '@material-ui/icons/Layers';
-
+import ClearIcon from '@material-ui/icons/Clear';
+import AddIcon from '@material-ui/icons/Add';
 import { AuthUserContext } from '../../Session';
 
 class ListGoals extends Component {
@@ -20,6 +20,7 @@ class ListGoals extends Component {
 		};
 		this.currentGoalClick = this.currentGoalClick.bind(this);
 		this.deleteGoalOnClick = this.deleteGoalOnClick.bind(this);
+		this.updateGoalOnClick = this.updateGoalOnClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -71,6 +72,11 @@ class ListGoals extends Component {
 		this.props.firebase.modifyGoal(user, goalId).remove();
 	}
 
+	updateGoalOnClick(goalId) {
+		const user = this.state.userId;
+		this.props.firebase.addOneDay(user, goalId);
+	}
+
 	render() {
 		const { goals, loading, currentGoal } = this.state;
 
@@ -83,6 +89,7 @@ class ListGoals extends Component {
 					currentGoalClick={this.currentGoalClick}
 					currentGoal={currentGoal}
 					deleteGoalOnClick={this.deleteGoalOnClick}
+					updateGoalOnClick={this.updateGoalOnClick}
 				/>
 			</div>
 		);
@@ -94,6 +101,7 @@ const GoalList = ({
 	currentGoalClick,
 	currentGoal,
 	deleteGoalOnClick,
+	updateGoalOnClick,
 }) => (
 	<>
 		{goals.map((goal) => {
@@ -108,7 +116,10 @@ const GoalList = ({
 							primary={`Title: ${goal.title}, Completion: ${goal.daysCompleted}/${goal.totalDays}`}
 						/>
 						<ListItemIcon>
-							<LayersIcon onClick={() => deleteGoalOnClick(goal.goalId)} />
+							<AddIcon onClick={() => updateGoalOnClick(goal.goalId)} />
+						</ListItemIcon>
+						<ListItemIcon>
+							<ClearIcon onClick={() => deleteGoalOnClick(goal.goalId)} />
 						</ListItemIcon>
 					</ListItem>
 				);
