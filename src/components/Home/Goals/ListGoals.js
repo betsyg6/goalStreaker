@@ -111,9 +111,11 @@ const GoalList = ({
 						button
 						onClick={() => currentGoalClick(goal.goalId)}
 					>
-						<ListItemText
-							primary={`Title: ${goal.title}, Completion: ${goal.daysCompleted}/${goal.totalDays}`}
-						/>
+						<ListItemText>
+							Title: {goal.title}, Completion: {goal.daysCompleted}/
+							{goal.totalDays}{' '}
+							{goal.daysCompleted >= goal.totalDays ? '🏆' : ''}
+						</ListItemText>
 						<ListItemIcon>
 							<AddIcon onClick={() => updateGoalOnClick(goal.goalId)} />
 						</ListItemIcon>

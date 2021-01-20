@@ -22,6 +22,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import CreateIcon from '@material-ui/icons/Create';
 import DataUsageIcon from '@material-ui/icons/DataUsage';
+import Typography from '@material-ui/core/Typography';
 
 const drawerWidth = 240;
 
@@ -134,6 +135,15 @@ const Navigation = () => {
 					>
 						<MenuIcon />
 					</IconButton>
+					<Typography
+						component='h1'
+						variant='h6'
+						color='inherit'
+						noWrap
+						className={classes.title}
+					>
+						🏆 Goal Streaker 🏆
+					</Typography>
 				</Toolbar>
 			</AppBar>
 			<Drawer

@@ -10,8 +10,11 @@ const DisplayGoal = ({ currentGoal }) => {
 		datasets: [
 			{
 				label: 'Goal Streak',
-				data: [currentGoal.daysCompleted, currentGoal.totalDays],
-				backgroundColor: ['#B21F00', '#C9DE00'],
+				data: [
+					currentGoal.daysCompleted,
+					currentGoal.totalDays - currentGoal.daysCompleted,
+				],
+				backgroundColor: ['#f5b942', '#f542bf'],
 			},
 		],
 	};
