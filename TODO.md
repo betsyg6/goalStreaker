@@ -8,3 +8,4 @@
 - security
 
 - display past goals?
+- edit readme
