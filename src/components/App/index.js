@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	container: {
 		display: 'flex',
-		height: '100%',
 		width: '100%',
 	},
 }));
@@ -36,6 +35,7 @@ const App = () => {
 		<Router>
 			<div className={classes.container}>
 				<Navigation />
+
 				{/* Hero unit */}
 				<div className={classes.heroContent}>
 					<Container>

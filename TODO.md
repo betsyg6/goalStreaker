@@ -7,4 +7,3 @@
 - security
 - change the text input fields for the numbers
 - add a footer
-- favicon
