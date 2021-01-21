@@ -94,6 +94,8 @@ class AddGoalFormBase extends Component {
 											variant='outlined'
 											required
 											fullWidth
+											type='number'
+											disabled
 											value={daysCompleted}
 											id='daysCompleted'
 											label='Days Completed'
@@ -107,6 +109,7 @@ class AddGoalFormBase extends Component {
 											variant='outlined'
 											required
 											fullWidth
+											type='number'
 											value={totalDays}
 											name='totalDays'
 											label='Total Days'
