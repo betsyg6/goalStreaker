@@ -1,4 +1,3 @@
-- redirect after signout
 - sign out icon in top right corner
 - toast notis for adding to goal
 

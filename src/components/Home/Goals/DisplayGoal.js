@@ -11,13 +11,23 @@ const DisplayGoal = ({ currentGoal }) => {
 			{
 				label: 'Goal Streak',
 				data: [
-					currentGoal.daysCompleted + 1,
-					currentGoal.totalDays - currentGoal.daysCompleted - 1,
+					currentGoal.daysCompleted,
+					currentGoal.totalDays - currentGoal.daysCompleted,
+					// currentGoal.daysCompleted + 1,
+					// currentGoal.totalDays - currentGoal.daysCompleted - 1,
 				],
 				backgroundColor: ['#f5b942', '#f542bf'],
 			},
 		],
 	};
+
+	//strange bug here
+	// console.log(
+	// 	'daysCompleted',
+	// 	currentGoal.daysCompleted,
+	// 	'total days',
+	// 	currentGoal.totalDays
+	// );
 
 	return (
 		<div>
