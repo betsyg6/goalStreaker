@@ -121,7 +121,11 @@ const GoalList = ({
 								{goal.daysCompleted >= goal.totalDays ? '🏆' : ''}
 							</ListItemText>
 							<ListItemIcon>
-								<AddIcon onClick={() => updateGoalOnClick(goal.goalId)} />
+								{goal.daysCompleted < goal.totalDays ? (
+									<AddIcon onClick={() => updateGoalOnClick(goal.goalId)} />
+								) : (
+									''
+								)}
 							</ListItemIcon>
 							<ListItemIcon>
 								<ClearIcon onClick={() => deleteGoalOnClick(goal.goalId)} />
