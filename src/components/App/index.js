@@ -10,6 +10,7 @@ import Account from '../Account';
 import Admin from '../Admin';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
+import StickyFooter from './Footer';
 //material ui
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -20,11 +21,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 	heroContent: {
 		backgroundColor: theme.palette.background.paper,
-		padding: theme.spacing(8, 0, 6),
+		padding: theme.spacing(4, 0, 6),
 	},
 	container: {
 		display: 'flex',
 		width: '100%',
+		flexDirection: 'column',
 	},
 }));
 
@@ -35,7 +37,6 @@ const App = () => {
 		<Router>
 			<div className={classes.container}>
 				<Navigation />
-
 				{/* Hero unit */}
 				<div className={classes.heroContent}>
 					<Container>
@@ -48,6 +49,7 @@ const App = () => {
 						<Route path={ROUTES.ADMIN} component={Admin} />
 					</Container>
 				</div>
+				<StickyFooter />
 			</div>
 		</Router>
 	);

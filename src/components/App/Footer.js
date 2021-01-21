@@ -9,8 +9,8 @@ function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary'>
 			{'Copyright © '}
-			<Link color='inherit' href='https://material-ui.com/'>
-				https://goalstreaker.herokuapp.com/
+			<Link color='inherit' href='https://goalstreaker.herokuapp.com/'>
+				https://goalstreaker.herokuapp.com
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		flexDirection: 'column',
-		minHeight: '50vh',
+		minHeight: '100%',
 	},
 	main: {
 		marginTop: theme.spacing(8),
@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 	footer: {
 		padding: theme.spacing(3, 2),
 		marginTop: 'auto',
-		position: 'sticky',
 		backgroundColor:
 			theme.palette.type === 'light'
 				? theme.palette.grey[200]

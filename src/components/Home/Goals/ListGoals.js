@@ -80,16 +80,19 @@ class ListGoals extends Component {
 		const { goals, loading, currentGoal } = this.state;
 
 		return (
-			<div>
-				<h1>All Goals</h1>
-				{loading && <div>Loading...</div>}
-				<GoalList
-					goals={goals}
-					currentGoalClick={this.currentGoalClick}
-					currentGoal={currentGoal}
-					deleteGoalOnClick={this.deleteGoalOnClick}
-					updateGoalOnClick={this.updateGoalOnClick}
-				/>
+			<div className='container'>
+				<div>
+					<h1>All Goals</h1>
+					{loading && <div>Loading...</div>}
+					<GoalList
+						goals={goals}
+						currentGoalClick={this.currentGoalClick}
+						currentGoal={currentGoal}
+						deleteGoalOnClick={this.deleteGoalOnClick}
+						updateGoalOnClick={this.updateGoalOnClick}
+					/>
+				</div>
+				<DisplayGoal currentGoal={currentGoal} />
 			</div>
 		);
 	}
@@ -101,36 +104,36 @@ const GoalList = ({
 	currentGoal,
 	deleteGoalOnClick,
 	updateGoalOnClick,
-}) => (
-	<>
-		{goals.map((goal) => {
-			if (goal.title) {
-				return (
-					<ListItem
-						key={goals.indexOf(goal)}
-						button
-						onClick={() => currentGoalClick(goal.goalId)}
-					>
-						<ListItemText>
-							Title: {goal.title}, Completion: {goal.daysCompleted}/
-							{goal.totalDays}{' '}
-							{goal.daysCompleted >= goal.totalDays ? '🏆' : ''}
-						</ListItemText>
-						<ListItemIcon>
-							<AddIcon onClick={() => updateGoalOnClick(goal.goalId)} />
-						</ListItemIcon>
-						<ListItemIcon>
-							<ClearIcon onClick={() => deleteGoalOnClick(goal.goalId)} />
-						</ListItemIcon>
-					</ListItem>
-				);
-			} else {
-				return '';
-			}
-		})}
-
-		<DisplayGoal currentGoal={currentGoal} />
-	</>
-);
+}) => {
+	return (
+		<div>
+			{goals.map((goal) => {
+				if (goal.title) {
+					return (
+						<ListItem
+							key={goals.indexOf(goal)}
+							button
+							onClick={() => currentGoalClick(goal.goalId)}
+						>
+							<ListItemText>
+								Title: {goal.title}, Completion: {goal.daysCompleted}/
+								{goal.totalDays}{' '}
+								{goal.daysCompleted >= goal.totalDays ? '🏆' : ''}
+							</ListItemText>
+							<ListItemIcon>
+								<AddIcon onClick={() => updateGoalOnClick(goal.goalId)} />
+							</ListItemIcon>
+							<ListItemIcon>
+								<ClearIcon onClick={() => deleteGoalOnClick(goal.goalId)} />
+							</ListItemIcon>
+						</ListItem>
+					);
+				} else {
+					return '';
+				}
+			})}
+		</div>
+	);
+};
 
 export default withFirebase(ListGoals);

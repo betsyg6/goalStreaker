@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import AddGoal from './Goals/AddGoal';
 import ListGoals from './Goals/ListGoals';
 //material ui
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -45,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	appBarSpacer: theme.mixins.toolbar,
 	content: {
-		flexGrow: 1,
+		// flexGrow: 1,
 		height: '100vh',
 		overflow: 'auto',
 	},
@@ -67,23 +66,13 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
 	const classes = useStyles();
 	const [showAddGoal, setShowAddGoal] = useState(false);
-	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	return (
 		<main className={classes.content}>
 			<div className={classes.appBarSpacer} />
 			<Container maxWidth='lg' className={classes.container}>
 				<Grid container spacing={3}>
-					{/* <Grid item xs={12} md={8} lg={9}>
-						<Paper className={fixedHeightPaper}>
-							<DisplayGoal />
-						</Paper>
-					</Grid> */}
-					<Grid item xs={12} lg={12}>
-						<Paper className={fixedHeightPaper}>
-							<ListGoals />
-						</Paper>
-					</Grid>
+					<ListGoals />
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
 							<Button onClick={() => setShowAddGoal(!showAddGoal)}>
