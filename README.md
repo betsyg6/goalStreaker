@@ -4,11 +4,11 @@ Check out the deployed site [here!](https://goalstreaker.herokuapp.com/)
 
 Inspired by New Years Resolutions that never seem to stick, Goal Streaker is an app that lets users track their progress/streak towards a goal they've committed to for a certain amount of days. It takes 14 days to form a habit, so the challenge is: Can you spend the next 14 days committed to a goal, that could ideally form into a daily practice or habit and improve your lifestyle?
 
-<img src="https://media.giphy.com/media/xfw5aaz9zR2BFvDDZf/giphy.mp4" width="100%" alt="GoalStreakerSignIn"/>
+<img src="https://media.giphy.com/media/xfw5aaz9zR2BFvDDZf/source.mov" width="100%" alt="GoalStreakerSignIn"/>
 
 Developed using React, Firebase (for user authentication and as a real time database), Chart.js for data visualization, and Material-UI for stlying by Betsy Groton.
 
-<img src="https://media.giphy.com/media/JmAs3FzUPboNKBEHpa/giphy.mp4" width="100%" alt="GoalStreakerDashboard"/>
+<img src="https://media.giphy.com/media/JmAs3FzUPboNKBEHpa/source.mov" width="100%" alt="GoalStreakerDashboard"/>
 
 # Downloading Instructions
 
